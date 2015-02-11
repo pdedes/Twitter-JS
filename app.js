@@ -10,7 +10,7 @@ app.get('/', function (request, response){
 })
 
 app.get('/news', function (request, response){
-	response.send('Todays News')
+	response.send('Todays News in English')
 })
 
 var server = app.listen(3000, function(){
