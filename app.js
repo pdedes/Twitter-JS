@@ -8,10 +8,15 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views')
 
+//Removes Caching for dev purposes
+swig.setDefaults({ cache: false });
+
 app.use(logger('dev'));
 
+var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}]
+
 app.get('/', function (request, response){
-	response.send('hello world!')
+	response.render('index', {title: 'Hall of Fame', people: people})
 })
 
 app.get('/news', function (request, response){
