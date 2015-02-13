@@ -11,7 +11,8 @@ var list = function() {
 }
 
 var find = function(properties){
-	console.log(data, properties)
+	// Used this console.log to identify the 'string' matching issue
+	// console.log(data, properties)
   return _.where(data, properties);
 }
 

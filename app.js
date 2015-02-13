@@ -2,19 +2,22 @@ var express = require('express');
 var logger =  require('morgan');
 var swig = require('swig')
 var routes = require('./routes/');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/views')
+app.set('views', __dirname + '/views');
 
 //Removes Caching for dev purposes
 swig.setDefaults({ cache: false });
 
+app.use(bodyParser.urlencoded());
 app.use(logger('dev'));
 app.use('/', routes);
 app.use(express.static(__dirname + '/public'));
+
 
 var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}]
 
