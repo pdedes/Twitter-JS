@@ -3,7 +3,7 @@ var _ = require('underscore');
 var data = []
 
 var add = function(name, text){
-	data.push({ name: name, text: text })
+	data.push({ name: name, text: text, id: id })
 }
 
 var list = function() {
@@ -11,7 +11,8 @@ var list = function() {
 }
 
 var find = function(properties){
-	return _.where(data, properties);
+	console.log(data, properties)
+  return _.where(data, properties);
 }
 
 module.exports = { add: add, list: list, find: find };
@@ -32,7 +33,8 @@ var getFakeTweet = function() {
 };
 
 for(var i=0; i<10; i++) {
-  module.exports.add( getFakeName(), getFakeTweet() );
+  module.exports.add( getFakeName(), getFakeTweet(), id = i );
+  // console.log(data)
 }
 
 // console.log("cloned data");
