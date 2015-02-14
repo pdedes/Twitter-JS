@@ -3,6 +3,7 @@ var logger =  require('morgan');
 var swig = require('swig')
 var routes = require('./routes/');
 var bodyParser = require('body-parser');
+var socketio = require('socket.io')
 
 var app = express();
 
@@ -15,7 +16,7 @@ swig.setDefaults({ cache: false });
 
 app.use(bodyParser.urlencoded());
 app.use(logger('dev'));
-app.use('/', routes);
+
 app.use(express.static(__dirname + '/public'));
 
 
@@ -28,6 +29,9 @@ var server = app.listen(3000, function(){
 
 	console.log('Example app listening at http://%s:%s', host, port)
 })
+
+var io = socketio.listen(server);
+app.use('/', routes(io));
 
 // app.get('/', function (request, response){
 // 	response.render('index', {title: 'Hall of Fame', people: people})

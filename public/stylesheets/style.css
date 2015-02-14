@@ -58,7 +58,7 @@ code {
   font-weight: bold;
 }
 
-.col-md-9 > li {
+.col-md-9 > ul {
   list-style-type: none;
 }
 
